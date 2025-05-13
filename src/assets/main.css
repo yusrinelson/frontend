@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn_auth {
+  @apply border-black border font-semibold py-2 px-10 rounded;
+}
+
+.form_input {
+  @apply h-8 rounded-sm bg-transparent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 disabled:cursor-not-allowed placeholder:text-gray-800 pl-2 mb-4;
+}
+
+.form_label {
+  @apply font-semibold text-[1rem];
+}
+
+.btn_submit{
+  @apply bg-black text-white font-semibold py-2 px-10 rounded;
+}
