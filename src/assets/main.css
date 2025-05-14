@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn_auth {
-  @apply border-black border font-semibold py-2 px-10 rounded;
+  @apply  font-semibold py-2 px-10 rounded w-full text-center;
 }
 
 .form_input {
@@ -15,5 +15,13 @@
 }
 
 .btn_submit{
-  @apply bg-black text-white font-semibold py-2 px-10 rounded;
+  @apply bg-[#2E8B57] text-white font-semibold py-2 px-10 rounded;
+}
+
+.dashboard_sidebar{
+  @apply flex items-center gap-3 text-gray-700 hover:text-[#2E8B57] cursor-pointer
+}
+
+.primary_color{
+  @apply text-[#2E8B57]
 }

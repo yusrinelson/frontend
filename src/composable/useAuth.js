@@ -31,7 +31,7 @@ export function useAuth() {
 
   const handleUnauthorized = () => {
     clearUser();
-    // router.push({ name: "login" });
+    router.push({ name: "home" });
   };
 
   /**

@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -96,26 +96,26 @@ onMounted(() => {
     clearInterval(authCheckInterval);
   });
 });
-</script>
+</script> -->
 
-<template>
-  <div class="bg-blue-200 p-4 flex justify-between items-center">
+<!-- <template> -->
+  <!-- <div class="bg-blue-200 p-4 flex justify-between items-center">
     <div>
       <h1>LOGO</h1>
     </div>
-    <div class="flex gap-4 items-center">
+    <div class="flex gap-4 items-center"> -->
       <!-- Show user email if logged in -->
-      <span v-if="isLoggedIn && user" class="font-medium">{{ user.email }}</span>
+      <!-- <span v-if="isLoggedIn && user" class="font-medium">{{ user.email }}</span>
       
-      <ShoppingBagIcon class="h-6 w-6 text-black cursor-pointer" />
+      <ShoppingBagIcon class="h-6 w-6 text-black cursor-pointer" /> -->
       
       <!-- Conditional rendering for login/logout button -->
-      <p 
+      <!-- <p 
         class="border border-black font-semibold p-2 rounded hover:bg-black hover:text-white cursor-pointer"
         @click="isLoggedIn ? handleLogout() : handleLoginClick()"
       >
         {{ isLoggedIn ? 'Logout' : 'Login' }}
       </p>
     </div>
-  </div>
-</template>
+  </div> -->
+<!-- </template> -->

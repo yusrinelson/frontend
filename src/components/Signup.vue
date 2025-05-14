@@ -95,23 +95,26 @@ const handleSignup = async () => {
 <template>
   <div class="bg-blue-200 h-fit flex justify-center items-center py-10">
     <div
-      class="bg-white p-10 w-[70vw] md:w-[70vw] lg:w-[50vw] h-fit rounded-md drop-shadow-md border-gray-300 border"
+      class="bg-white p-3 md:p-10 w-[90vw] md:w-[70vw] lg:w-[40vw] h-fit rounded-md drop-shadow-md border-gray-300 border"
     >
-      <h1 class="text-3xl text-center font-bold mb-2">Welcome Newbie :)</h1>
+      <h1 class="text-3xl text-center font-bold mb-2">VueMarket</h1>
       <p class="text-center mb-2 text-gray-500">Create new Account</p>
-      <div class="flex justify-center items-center gap-4 mt-4 mb-8">
-        <RouterLink
+
+      <div class="flex justify-center items-center my-6">
+        <div class="bg-[#83e6ae] py-1 px-1 rounded-md w-[90vw] flex justify-center items-center">
+          <RouterLink
           to="/login"
           class="btn_auth"
-          :class="route.path === '/login' ? 'bg-black text-white' : ''"
+          :class="route.path === '/login' ? 'bg-[#2E8B57] text-white' : 'text-gray-500'"
           >Login</RouterLink
         >
         <RouterLink
           to="/signup"
           class="btn_auth"
-          :class="route.path === '/signup' ? 'bg-black text-white' : ''"
+          :class="route.path === '/signup' ? 'bg-[#2E8B57] text-white' : 'text-gray-500'"
           >Signup</RouterLink
         >
+        </div>
       </div>
 
  <!-- Main error message -->
@@ -171,8 +174,8 @@ const handleSignup = async () => {
             <button
               type="button"
               :class="[
-                'w-[90vw] p-4 border border-black rounded-md flex justify-center items-center flex-col',
-                role === 'user' ? 'bg-black text-white' : ''
+                'w-[90vw] p-4 border border-[#2E8B57] rounded-md flex justify-center items-center flex-col',
+                role === 'user' ? 'bg-[#2E8B57] text-white' : ''
               ]"
               @click="role = 'user'"
             >
@@ -181,8 +184,8 @@ const handleSignup = async () => {
             <button
             type="button"
               :class="[
-                'w-[90vw] p-4 border border-black rounded-md flex justify-center items-center flex-col',
-                role === 'seller' ? 'bg-black text-white' : ''
+                'w-[90vw] p-4 border border-[#2E8B57] rounded-md flex justify-center items-center flex-col',
+                role === 'seller' ? 'bg-[#2E8B57] text-white' : ''
               ]"
               @click="role = 'seller'"
             >
