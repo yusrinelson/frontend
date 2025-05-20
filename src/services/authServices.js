@@ -20,7 +20,7 @@ if (!refreshToken) {
         throw new Error("No refresh token provided");
       }
 
-      const response = axios.post(`${API_BASE_URL}/api/auth/refresh-token`, {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/refresh`, {
         refreshToken,
       });
 

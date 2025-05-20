@@ -1,6 +1,6 @@
 <template>
     <div>
-orders
+overview
     </div>
 </template>
 

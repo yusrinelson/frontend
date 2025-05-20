@@ -10,18 +10,25 @@ import {
     ArrowRightEndOnRectangleIcon 
 } from '@heroicons/vue/24/outline';
 
-
 import { useAuth } from '../composable/useAuth';
+import Navbar from '@/components/Navbar.vue';
+import { onMounted } from 'vue';
+
 
 const { logoutUser } = useAuth();
-
+const { message, updateMessage, emailMessage } = useAuth();
 // Logout function
 const logout = async () => {
     await logoutUser()
 };
+
+onMounted(async () => {
+    updateMessage();
+})
 </script>
 
 <template>
+    <Navbar/>
     <div class="flex h-screen">
         <!-- Left side -->
         <div class="w-[25%] bg-gray-100 flex flex-col h-full">
@@ -87,8 +94,8 @@ const logout = async () => {
                 <div class="flex items-center gap-3 text-gray-700">
                     <UserCircleIcon class="h-6 w-6" />
                     <span class="flex flex-col">
-                        <p class="font-semibold text-sm">John Doe</p>
-                        <p class="text-xs text-gray-500">john@gmail.com</p>
+                        <p class="font-semibold text-sm">{{message}}</p>
+                        <p class="text-xs text-gray-500">{{ emailMessage }}</p>
                     </span>
                 </div>
                 <div class="dashboard_sidebar">
@@ -103,7 +110,7 @@ const logout = async () => {
         </div>
 
         <!-- Right side -->
-        <div class="flex-1 overflow-y-auto bg-blue-500">
+        <div class="flex-1 overflow-y-auto bg-gray-200">
             <router-view></router-view>
         </div>
     </div>

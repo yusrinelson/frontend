@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, capitalize } from "vue";
 import { useRouter } from 'vue-router';
 import { getCookie } from '@/utils/cookieUtils';
 //imports servcie functions
@@ -15,6 +15,8 @@ export function useAuth() {
   if (storedUser) {
     user.value = JSON.parse(storedUser);
   }
+
+
 
   const setUser = (userData) => {
     user.value = userData;
@@ -42,15 +44,16 @@ export function useAuth() {
     try {
       const refreshTokenValue = getCookie("refreshToken");
       if (!refreshTokenValue) {
+        // console.warn("No refresh token found, logging out.");
         handleUnauthorized();
         return false;
       }
 
-      const refreshResponse = await refreshToken(refreshToken) // Call the refreshToken/service function to get the new token
+      const refreshResponse = await refreshToken(refreshTokenValue) // Call the refreshToken/service function to get the new token
       const newToken = refreshResponse.token;
 
       // Update token in cookies
-      document.cookie = `token=${newToken}; path=/; max-age=120; secure; samesite=strict;`;
+      document.cookie = `token=${newToken}; path=/; max-age=1h; secure; samesite=strict;`;
 
       // Fetch user data again with the new token
       const userData = await fetchCurrentUser(newToken);
@@ -75,8 +78,7 @@ export function useAuth() {
     try {
       const token = getCookie("token");
       if (!token) {
-        handleUnauthorized();
-        return false;
+        return await handleTokenExpired();
       }
 
       const userData = await fetchCurrentUser(token); // call service function to fetch user data
@@ -112,6 +114,28 @@ export function useAuth() {
     }
   };
 
+  const init = async () => {
+    if (user.value) {
+      console.log("User already logged in, skipping login check.", user.value);
+      return;
+    };
+    // console.log("Initializing user data on app load...");
+    await fetchUserData();
+  }
+
+  const message = ref('Guest');
+  const emailMessage = ref('');
+
+
+  // Function to update user data from localStorage
+  const updateMessage = () => {
+    const userName = user.value?.name;
+    message.value = userName ? capitalize(userName) :  'Guest';
+
+    emailMessage.value = user.value?.email;
+
+  }
+
   return {
     user,
     setUser,
@@ -119,6 +143,10 @@ export function useAuth() {
     handleUnauthorized,
     handleTokenExpired,
     fetchUserData,
-    logoutUser
+    logoutUser,
+    init,
+    message,
+    updateMessage,
+    emailMessage
   };
 }

@@ -59,8 +59,8 @@ const handleSignup = async () => {
     console.log("Response:", data);
 
     //store in cookies
-    document.cookie = `token=${data.token}; path=/; max-age=120; secure; samesite=strict`;
-    document.cookie = `refreshToken=${data.refreshToken}; path=/; max-age=300; secure; samesite=strict`;
+    document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
+    document.cookie = `refreshToken=${data.refreshToken}; path=/; max-age=604800; secure; samesite=strict`;
 
     //store in local storage
      // Store in local storage
@@ -72,7 +72,7 @@ const handleSignup = async () => {
     }));
 
     //redirect
-    await router.push("/login")
+    await router.push(role.value === 'seller' ? '/seller-dashboard' : '/user-dashboard');
 
   } catch (error) {
     if (error.response) {

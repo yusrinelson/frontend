@@ -35,8 +35,8 @@ const handleLogin = async () => {
     console.log("Response:", data);
 
     //store in cookies
-    document.cookie = `token=${data.token}; path=/; max-age=120; secure; samesite=strict;`;
-    document.cookie = `refreshToken=${data.refreshToken}; path=/; max-age=300; secure; samesite=strict;`;
+    document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict;`;
+    document.cookie = `refreshToken=${data.refreshToken}; path=/; max-age=604800; secure; samesite=strict;`;
 
     //update reactive shared state
     setUser({
