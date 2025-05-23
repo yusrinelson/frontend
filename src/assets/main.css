@@ -33,3 +33,8 @@
 .seller_table-data{
   @apply px-4 py-4 text-sm text-gray-500 whitespace-nowrap text-center
 }
+
+/* homevue */
+.sort_Items-list {
+  @apply flex items-center gap-2 bg-slate-50 p-2 hover:bg-slate-100 rounded-md cursor-pointer
+}

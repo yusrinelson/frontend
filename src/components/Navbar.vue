@@ -30,7 +30,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="bg-[#2E8B57] p-4 flex justify-between items-center sticky top-0 text-white">
+    <div class="bg-[#2E8B57] p-4 flex justify-between items-center sticky top-0 text-white z-10">
         <div>
             <h1>LOGO</h1>
         </div>
